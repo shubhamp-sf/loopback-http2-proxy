@@ -15,4 +15,4 @@ fastify.get('/', function (request, reply) {
   reply.code(200).send(jsonData)
 })
 
-fastify.listen({ port: 3000 })
+fastify.listen({ port: 3001 })
