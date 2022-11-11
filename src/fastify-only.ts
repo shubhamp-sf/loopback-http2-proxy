@@ -12,9 +12,10 @@ const fastify = Fastify({
       path.join(__dirname, "..", "https", "localhost-cert.pem")
     ),
   },
+  logger: true,
 });
 const jsonData = fs.readFileSync(
-  path.join(__dirname, "data", "data-big.json"),
+  path.join(__dirname, "..", "data", "data-big.json"),
   "utf8"
 );
 
