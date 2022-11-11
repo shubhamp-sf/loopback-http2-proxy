@@ -1,6 +1,14 @@
 {
+  "scripts": {
+    "lb4-proxy": "tsc && node dist/lb4-proxy.js",
+    "fastify-only": "tsc && node dist/fastify-only.js"
+  },
   "dependencies": {
     "@fastify/middie": "^8.0.0",
+    "connect": "^3.7.0",
     "fastify": "^4.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9"
   }
 }
