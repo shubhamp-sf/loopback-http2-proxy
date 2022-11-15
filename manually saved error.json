@@ -1,0 +1,31 @@
+{
+  "level":50,
+  "time":1668161034334,
+  "pid":4020,
+  "hostname":"Subham-Prajapat",
+  "reqId":"req-1",
+  "req":{"url":"/"},
+  "res":{"statusCode":500},
+  "err":{
+    "type":"TypeError",
+    "message":"Cannot read properties of undefined (reading 'content-type')",
+    "stack":"TypeError: Cannot read properties of undefined (reading 'content-type')
+        at ServerResponse.hasHeader (node:_http_outgoing:744:24)    
+        at Reply.getHeader (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\reply.js:205:34)\n
+        at Reply.send (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\reply.js:142:28)\n
+        at Object.<anonymous> (D:\\http2\\fastify-http2\\dist\\lb4-proxy.js:65:31)\n
+        at preHandlerCallback (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\handleRequest.js:128:37)\n
+        at preValidationCallback (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\handleRequest.js:112:5)\n
+        at handler (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\handleRequest.js:76:7)\n
+        at handleRequest (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\handleRequest.js:62:3)\n
+        at runPreParsing (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\route.js:522:5)\n
+        at next (D:\\http2\\fastify-http2\\node_modules\\fastify\\lib\\hooks.js:168:7)\n
+        at onMiddieEnd (D:\\http2\\fastify-http2\\node_modules\\@fastify\\middie\\index.js:49:5)\n
+        at Holder.done (D:\\http2\\fastify-http2\\node_modules\\@fastify\\middie\\engine.js:90:9)\n
+        at D:\\http2\\default-app\\node_modules\\express\\lib\\router\\index.js:646:15\n
+        at next (D:\\http2\\default-app\\node_modules\\express\\lib\\router\\index.js:216:14)\n
+        at expressInit (D:\\http2\\default-app\\node_modules\\express\\lib\\middleware\\init.js:40:5)\n
+        at Layer.handle [as handle_request] (D:\\http2\\default-app\\node_modules\\express\\lib\\router\\layer.js:95:5)"
+  },
+  "msg":"Cannot read properties of undefined (reading 'content-type')"
+}
