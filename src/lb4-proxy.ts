@@ -3,7 +3,8 @@ import path from "path";
 import Fastify from "fastify";
 import middle from "@fastify/middie";
 import { DefaultAppApplication as DemoLB4App } from "../../default-app/dist/application";
-import { Http2ServerRequest } from "http2";
+import { requestAdapter } from "./utils/request-adapter";
+import { responseAdapter } from "./utils/response-adapter";
 
 let lbApp = new DemoLB4App({});
 lbApp.projectRoot = path.resolve(__dirname, "..", "..", "default-app", "dist");
@@ -32,14 +33,18 @@ async function build() {
       next();
     });
 
-    // fastify.use("/", lbApp.requestHandler);
-
-    fastify.get("/", (request, res) => {
+    fastify.get("*", (request, res) => {
+      // console.log(request.raw.headers);
       // request.raw /** HTTP2 stream -> can't be forwarded to loopback  */
-      res.code(200).send({ hello: request });
-    });
 
-    // fastify.use("/", lbApp.requestHandler);
+      lbApp.requestHandler(
+        requestAdapter(request.raw),
+        responseAdapter(res.raw)
+      );
+
+      // fastify sends http2 responses like this
+      // res.code(200).send({ hello: request.raw.headers });
+    });
 
     // Start the server
     fastify.listen({ port: 3001 }, (err) => {
