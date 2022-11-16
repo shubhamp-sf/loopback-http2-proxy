@@ -30,7 +30,10 @@ app.projectRoot = path.resolve(__dirname, "..", "..", "default-app", "dist");
 server.on("error", (err) => console.error(err));
 
 app.boot().then(async () => {
-  await app.start();
+  await app.start().catch((err) => {
+    console.error(`Starting Loopback app failed.`, err);
+    process.exit(1);
+  });
   server.on("request", (req, res) => {
     console.log("HTTP2 Requested ->", req.headers[":path"]);
     app.requestHandler(requestAdapter(req), responseAdapter(res));
