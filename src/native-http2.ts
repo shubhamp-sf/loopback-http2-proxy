@@ -5,7 +5,7 @@
 import http2 from "http2";
 import path from "path";
 import fs from "fs";
-import { DefaultAppApplication as DemoLB4App } from "../../default-app/dist/application";
+import { DefaultAppApplication as DemoLB4App } from "../../default-app";
 import { requestAdapter } from "./utils/request-adapter";
 import { responseAdapter } from "./utils/response-adapter";
 
@@ -20,15 +20,20 @@ const server = http2.createSecureServer({
 });
 
 // setup loopback app
-let lbApp = new DemoLB4App({});
-lbApp.projectRoot = path.resolve(__dirname, "..", "..", "default-app", "dist");
+let app = new DemoLB4App({
+  rest: {
+    listenOnStart: false,
+  },
+});
+app.projectRoot = path.resolve(__dirname, "..", "..", "default-app", "dist");
 
 server.on("error", (err) => console.error(err));
 
-lbApp.boot().then(function () {
+app.boot().then(async () => {
+  await app.start();
   server.on("request", (req, res) => {
     console.log("HTTP2 Requested ->", req.headers[":path"]);
-    lbApp.requestHandler(requestAdapter(req), responseAdapter(res));
+    app.requestHandler(requestAdapter(req), responseAdapter(res));
 
     /* res.write(JSON.stringify(req.headers));
     res.end(); */
@@ -50,5 +55,5 @@ server.on("stream", (stream, headers) => {
 }); */
 
 server.listen({ port: 8443 }, () => {
-  console.log("may be started on 8443");
+  console.log("Listening on https://localhost:8443/");
 });

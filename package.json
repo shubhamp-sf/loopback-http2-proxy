@@ -1,7 +1,8 @@
 {
   "scripts": {
     "fastify-http2": "tsc && node dist/fastify-http2.js",
-    "native-http2": "tsc && node dist/native-http2.js"
+    "native-http2": "tsc && node dist/native-http2.js",
+    "start": "set DEBUG=loopback:rest:server && npm run native-http2"
   },
   "dependencies": {
     "@fastify/middie": "^8.0.0",

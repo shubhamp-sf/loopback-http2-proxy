@@ -9,7 +9,6 @@ export const responseAdapter = (
     // @ts-ignore
     setHeader(name, value) {
       console.log(name, value);
-      console.log("sent", this.headersSent);
       http2Response.setHeader(name, value);
     },
     send(body: string) {
