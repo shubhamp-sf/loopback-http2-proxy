@@ -1,3 +1,7 @@
+/**
+ * http2 server having requests forwarded to lb4 app using fastify.
+ */
+
 import * as fs from "fs";
 import path from "path";
 import Fastify from "fastify";
@@ -14,10 +18,10 @@ async function build() {
     http2: true,
     https: {
       key: fs.readFileSync(
-        path.join(__dirname, "..", "https", "localhost-privkey.pem")
+        path.join(__dirname, "..", "keys", "localhost-privkey.pem")
       ),
       cert: fs.readFileSync(
-        path.join(__dirname, "..", "https", "localhost-cert.pem")
+        path.join(__dirname, "..", "keys", "localhost-cert.pem")
       ),
     },
     logger: true,

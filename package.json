@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "lb4-proxy": "tsc && node dist/lb4-proxy.js",
-    "fastify-only": "tsc && node dist/fastify-only.js",
-    "core-http2": "tsc && node dist/core-http2.js"
+    "fastify-http2": "tsc && node dist/fastify-http2.js",
+    "native-http2": "tsc && node dist/native-http2.js"
   },
   "dependencies": {
     "@fastify/middie": "^8.0.0",

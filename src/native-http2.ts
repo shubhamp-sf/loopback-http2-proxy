@@ -1,8 +1,10 @@
+/**
+ * http2 server having requests forwarded to lb4 app using Native http2 package.
+ */
+
 import http2 from "http2";
-import http from "http";
 import path from "path";
 import fs from "fs";
-import { Socket } from "net";
 import { DefaultAppApplication as DemoLB4App } from "../../default-app/dist/application";
 import { requestAdapter } from "./utils/request-adapter";
 import { responseAdapter } from "./utils/response-adapter";
@@ -10,10 +12,10 @@ import { responseAdapter } from "./utils/response-adapter";
 // create server
 const server = http2.createSecureServer({
   key: fs.readFileSync(
-    path.join(__dirname, "..", "https", "localhost-privkey.pem")
+    path.join(__dirname, "..", "keys", "localhost-privkey.pem")
   ),
   cert: fs.readFileSync(
-    path.join(__dirname, "..", "https", "localhost-cert.pem")
+    path.join(__dirname, "..", "keys", "localhost-cert.pem")
   ),
 });
 
@@ -27,6 +29,9 @@ lbApp.boot().then(function () {
   server.on("request", (req, res) => {
     console.log("HTTP2 Requested ->", req.headers[":path"]);
     lbApp.requestHandler(requestAdapter(req), responseAdapter(res));
+
+    /* res.write(JSON.stringify(req.headers));
+    res.end(); */
   });
 });
 
