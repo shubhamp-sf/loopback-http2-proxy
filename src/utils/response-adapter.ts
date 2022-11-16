@@ -9,11 +9,19 @@ export const responseAdapter = (
     // @ts-ignore
     setHeader(name, value) {
       console.log(name, value);
-      // http2Response.setHeader(name, value);
+      console.log("sent", this.headersSent);
+      http2Response.setHeader(name, value);
     },
     send(body: string) {
-      // console.log("Received", body);
-      http2Response.write(body, "utf-8");
+      console.log("Received", body);
+      if (Array.isArray(body)) {
+        body = JSON.stringify(body);
+      }
+      if (body === undefined) {
+        http2Response.end();
+        return;
+      }
+      http2Response.write(body);
       http2Response.end();
     },
   };
