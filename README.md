@@ -1,7 +1,7 @@
 ### Directory Structure
 ```
 .
-├── fastify-http2/ (• this repository)
+├── loopback-http2-proxy/ (• this repository)
 │   └── src
 │       ├── core-http2.ts (native http2 implementation)
 │       ├── fastify-only.ts (normal http2 server with fastify)
