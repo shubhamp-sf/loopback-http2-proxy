@@ -5,6 +5,16 @@ Proxy code for forwarding HTTP2 requests to loopback, in two ways:
 1. Internal [node:http2](https://nodejs.org/api/http2.html)
 2. Fastify's [http2 server](https://www.fastify.io/docs/latest/Reference/HTTP2/)
 
+<details>
+  <summary>Check Out the Request Flow</summary>
+
+  ### Request Flow
+
+  ![image](https://user-images.githubusercontent.com/110156023/202389473-464f9600-f5ad-4e5a-a402-df9ea9aa4359.png)
+
+</details>
+
+
 ### Directory Structure
 
 ```
