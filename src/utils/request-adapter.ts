@@ -6,7 +6,9 @@ import { Socket } from "net";
 export const requestAdapter = (
   http2Request: Http2ServerRequest
 ): IncomingMessage => {
-  const http1Req = new IncomingMessage(new Socket());
+  let socket = new Socket();
+
+  const http1Req = new IncomingMessage(socket);
   http1Req.method = "GET";
   http1Req.url = http2Request.headers[":path"];
   return http1Req;

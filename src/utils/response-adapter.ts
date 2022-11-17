@@ -1,5 +1,7 @@
 import * as http from "http";
 import { Http2ServerResponse } from "http2";
+import { Response } from "@loopback/rest";
+import { Readable } from "stream";
 
 // TEMPORARY (will need a fully refactored object to make it work for all edge cases)
 export const responseAdapter = (
@@ -8,16 +10,33 @@ export const responseAdapter = (
   return {
     // @ts-ignore
     setHeader(name, value) {
-      console.log(name, value);
       http2Response.setHeader(name, value);
     },
-    send(body: string) {
-      console.log("Received", body);
-      if (Array.isArray(body)) {
+    // @ts-ignore
+    end(chunk: any, encoding: BufferEncoding, cb?: () => void) {
+      console.log("end called chunk:", chunk);
+      http2Response.end(cb);
+      return this;
+    },
+    // @ts-ignore
+    send(body: Response | string | object) {
+      console.log(`response adapter's send called.`);
+      let responseInstance =
+        body instanceof Response || body instanceof http.ServerResponse;
+      console.log("body instanceof Response", responseInstance);
+
+      /* console.log("typeof body", typeof body);
+      console.log("Received", body); */
+
+      if (responseInstance) {
+        this.end();
+        return;
+      }
+      if (typeof body === "object") {
         body = JSON.stringify(body);
       }
       if (body === undefined) {
-        http2Response.end();
+        this.end();
         return;
       }
       http2Response.write(body);
@@ -25,6 +44,3 @@ export const responseAdapter = (
     },
   };
 };
-
-// The construction of adapter is no longer a problem.
-// So far got success in requesting "GET" with controller methods that ***returns*** the response not directly write it to http.

@@ -32,11 +32,6 @@ async function build() {
   });
 
   lbApp.boot().then(function () {
-    fastify.use("/", (req, res, next) => {
-      req.baseUrl = "/";
-      next();
-    });
-
     fastify.get("*", (request, res) => {
       // console.log(request.raw.headers);
       // request.raw /** HTTP2 stream -> can't be forwarded to loopback  */
