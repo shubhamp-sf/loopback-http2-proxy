@@ -8,12 +8,11 @@ Proxy code for forwarding HTTP2 requests to loopback, in two ways:
 <details>
   <summary>Check Out the Request Flow</summary>
 
-  ### Request Flow
+### Request Flow
 
-  ![image](https://user-images.githubusercontent.com/110156023/202389473-464f9600-f5ad-4e5a-a402-df9ea9aa4359.png)
+![image](https://user-images.githubusercontent.com/110156023/202389473-464f9600-f5ad-4e5a-a402-df9ea9aa4359.png)
 
 </details>
-
 
 ### Directory Structure
 
@@ -31,7 +30,7 @@ Proxy code for forwarding HTTP2 requests to loopback, in two ways:
 
 ### Changes required in Loopback App
 
-***TODO***
+**_TODO_**
 
 ### Current Supoprt
 
@@ -54,7 +53,7 @@ An lb4 app [sourced here](https://github.com/shubhamp-sf/lb4-sandbox-http2) is b
   - [x] `@get('/users')`
   - [x] `@get('/users/count')`
   - [ ] `@patch('/users')`
-  - [ ] `@get('/users/{id}')`
+  - [x] `@get('/users/{id}')`
   - [ ] `@patch('/users/{id}')`
   - [ ] `@put('/users/{id}')`
   - [ ] `@del('/users/{id}')`
