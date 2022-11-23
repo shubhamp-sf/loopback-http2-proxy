@@ -35,7 +35,7 @@ Proxy code for forwarding HTTP2 requests to loopback, in two ways:
 ### Current Supoprt
 
 - [x] GET routes with **_returned_** responses
-- [ ] GET routes with responses **_send()_** directly to http by loopback.
+- [x] GET routes with responses **_send()_** directly to http by loopback.
 - [ ] Translated http/1 Headers
 - [ ] Cookies
 - [ ] Status Codes
