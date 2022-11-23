@@ -45,9 +45,9 @@ Proxy code for forwarding HTTP2 requests to loopback, in two ways:
 
 ### What has been tested?
 
-An lb4 app [sourced here](https://github.com/shubhamp-sf/lb4-sandbox-http2) is being used to test different routes and responses.
+An lb4 app [sourced here](https://github.com/shubhamp-sf/loopback-http2-sandbox) is being used to test different routes and responses.
 
-- [ ] REST Controller with CRUD functions (Datasource: Postgres) [source](https://github.com/shubhamp-sf/lb4-sandbox-http2/blob/main/src/controllers/user.controller.ts)
+- [ ] REST Controller with CRUD functions (Datasource: Postgres) [source](https://github.com/shubhamp-sf/loopback-http2-sandbox/blob/main/src/controllers/user.controller.ts)
 
   - [ ] `@post('/users')`
   - [x] `@get('/users')`
