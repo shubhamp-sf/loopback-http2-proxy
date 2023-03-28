@@ -1,3 +1,6 @@
+> Checkout this blog for http2 support in lb4 app: https://blog.shubhamp.dev/how-to-use-http2-in-loopback-4-applications
+> Related Thread: https://github.com/loopbackio/loopback-next/discussions/9067
+
 # http/2 proxy for loopback
 
 Proxy code for forwarding HTTP2 requests to loopback, in two ways:
